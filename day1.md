@@ -108,3 +108,4 @@ void main(){
 }
 
 ```
+<h1 align="center"> <a href="/day2.md">Day 2 notes</a></h1>
