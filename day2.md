@@ -198,4 +198,50 @@
        Method A
        Method B
    ```
+## Control flow in Dart
+
+- if-else
+- switch-case
+- for loop (for, for-in, for-each)
+- while loop `when we don't know the number of iterations`
+- do-while loop `executes once then checks the condition`
+- break and continue
+
+## Functions in Dart
+
+- code reusability
+
+- return type is optional, `dynamic` if not specified 
+- datatype of parameters is optional, `dynamic` if not specified
+- arguments: visible in fn call (actual parameters)
+- parameters: visible in fn definition (formal parameters)
+
+- Parameter types: 
+    - positional: `(int x, int y)`
+        > called like `fn(5, 6)`
+    - named: `({int x, int y})` , { } indicates named parameters
+        > called like `fn(x: 5, y: 6)`
+    - default: `(x, [y = 0])`, [ ] indicates default parameters
+        > called like `fn(5)`
+    - optional: 
+        - positional: `([int? x, int? y])` 
+            > called like `fn(5, 6)`
+        - named: `({x, int? y})`
+            > called like `fn(x: 5, y: 6)`
+        - default: `(int? x, [y = 10])` 
+            > called like `fn(5)`
+
+
+- `Anonymous fn` / Lambda fn / fat arrow / single line fn 
+    ```dart
+        var sum = (int x, int y) => x + y;
+        print(sum(5, 6)); // 11
+    ```
+
+ functions are objects of type `Function`
+- Functions can be assigned to variables or passed as arguments to other functions, thats why they are called first class objects
+
+
+
+
 <h1 align="center"> <a href="/day3.md">Day 3 notes</a></h1>
