@@ -237,10 +237,17 @@
         var sum = (int x, int y) => x + y;
         print(sum(5, 6)); // 11
     ```
+- Function as first-class objects
+    >  as they can be assigned to variables or passed as arguments to other functions
+    ```dart
+        void main() {
+            var sum = (int x, int y) => x + y;
+            print(sum(5, 6)); // 11
 
- functions are objects of type `Function`
-- Functions can be assigned to variables or passed as arguments to other functions, thats why they are called first class objects
-
+            var myFn = sum;
+            print(myFn(5, 6)); // 11
+        }
+    ```
 
 
 
