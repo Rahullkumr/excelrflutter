@@ -13,20 +13,19 @@
 
 <details>
    <summary>Answer by Steve Jobs</summary>
-    <p>
-        <br><b>Jeff Goodell:</b>
+   
+   <br><b>Jeff Goodell:</b>
 
         Would you explain, in simple terms, exactly what object-oriented software is?
+   
 
-<b>Steve Jobs: </b><br>
+  <b>Steve Jobs: </b><br>
 
         Objects are like people. They’re living, breathing things that have knowledge inside them about how to do things and have memory inside them so they can remember things. And rather than interacting with them at a very low level, you interact with them at a very high level of abstraction, like we’re doing right here.
 
         Here’s an example: If I’m your laundry object, you can give me your dirty clothes and send me a message that says, “Can you get my clothes laundered, please.” I happen to know where the best laundry place in San Francisco is. And I speak English, and I have dollars in my pockets. So I go out and hail a taxicab and tell the driver to take me to this place in San Francisco. I go get your clothes laundered, I jump back in the cab, I get back here. I give you your clean clothes and say, “Here are your clean clothes.”
 
         You have no idea how I did that. You have no knowledge of the laundry place. Maybe you speak French, and you can’t even hail a taxi. You can’t pay for one, you don’t have dollars in your pocket. Yet I knew how to do all of that. And you didn’t have to know any of it. All that complexity was hidden inside of me, and we were able to interact at a very high level of abstraction. That’s what objects are. They encapsulate complexity, and the interfaces to that complexity are high level.
-    </p>
-
 </details>
 
 ## Functional Programming vs OOPS
@@ -61,39 +60,69 @@
 ## Constructor
 
 - without the help of constructor, we cannot build a house
-- similarly, without the help of constructor, we cannot build an object
+- similarly, without constructor, we cannot build an object
 - without constructor, memory cannot be allocated to the object
-- if we don't create a constructor, then a default constructor is created by the compiler
-
+- when we don't create a constructor, a default hidden constructor is created by the compiler
 - constructor looks like a method but it is not a method, i.e it can't be called like a method
-- has the same name as the class
 - constructor will be called automatically when an object is created
-- constructor is used to initialize the instance variables of a class 
-- types of constructors
-  - default constructor
-    > has no parameters and is automatically created by compiler if no other constructor is there 
-  - parameterized constructor
-    > has parameters and is used to initialize the instance variables of a class
-  - named constructor
+- constructor has the same name as the class
+- constructor is `used to initialize the instance variables` of a class, except DEFAULT constructor
+
+<details>
+  <summary>My Question</summary>
+  <p>
+    <b>Q : </b> 
+      <ul>
+        <li>What if a developer creates a constructor and does not explicitly initializes the variables? will the variables be initialized, if yes, who does it? Will the default constructor be provided or something else happens?</li>
+    </ul>
+    <b>A :</b> 
+      <ul>
+        <li>If a developer creates a constructor and does not explicitly initialize the instance variables, those variables will still be initialized with their default values.</li>
+        <li>The <u><i>automatic initialization</i></u> of instance variables with default values is done <u><i>by Dart runtime system</i></u> when an object is created. This is a built-in feature of the language and happens regardless of whether a constructor is defined or not.</li>
+        <li>The <b>default constructor</b> provided by the compiler <strike>does not play a role in initialization.</strike></li>
+      </ul>
+  </p>
+</details>
+
+## Types of constructor
+
+  1. DEFAULT constructor
+
+    > - hidden, automatically provided by compiler if no constructor is present in the class
+
+    > - does not play a role in the initialization
+
+    > - The primary use of the default constructor is to create an instance of the class
+
+    > - to perform some setup or initialization when an object is created, you can define your own constructor to replace the default one.
+    
+  2. 0-arg constructor
+    > created by coder, has no parameters 
+  3. parameterized constructor
+    > has parameters
+  4. named constructor
     > has a name and is used to create multiple constructors for a class
-  - constant constructor
+  5. constant constructor
     > has a const keyword and is used to create compile time constants
 
 ```dart
     class Student{
-        var name = "Ram";
-        Student(){
+        var name = "";
+        Student(var name){
+            this.name = name; 
+            // when parameter name is same as instance variable name
+            // this keyword is used to refer to the instance variable
             print("Constructor called");
         }
         void study(){
-            print("Student studies");  
+            print("$name studies");  
         }
         void play(){
             print("Student plays");
         }
     }
     void main(){
-        Student s1 = Student(); // object creation (memory allocation)
+        Student s1 = Student("Ram"); // object creation (memory allocation)
         print(s1.name);
         s1.study();
         s1.play();
