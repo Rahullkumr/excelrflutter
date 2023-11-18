@@ -106,6 +106,60 @@ void main(){
 
     var id = null;
 }
-
 ```
+## Types of variables
+
+- Global variables
+  - declared outside all classes 
+  - can be accessed from anywhere in the code
+  - available throughout the entire lifecycle of the application
+
+- Local variables
+  - defined within a method, constructor or block
+  - created when the method, constructor or block is entered and destroyed as soon as it is left 
+  - can be accessed only within the method, constructor or block.
+
+- Instance variables
+  - defined within a class but outside any method. 
+  - They belong to an instance of the class, i.e,
+  - each instance of the class has its own copy of the instance variable
+  - that's why can be accessed only using the object of the class
+
+- Static variables
+  - also defined within a class but outside any method. 
+  - belong to the class itself rather than to any instance of the class.
+  - can not be accessed using the object of the class.
+  - accessed only using class name.
+  - There is only one copy of a static variable, and it is shared among all instances of the class.
+
+```dart
+// Global variable
+var globalVariable = 'I am a global variable';
+
+class MyClass {
+  // Instance variable
+  var instanceVariable = 'I am an instance variable';
+
+  // Static variable
+  static var staticVariable = 'I am a static variable';
+
+  void myMethod() {
+    // Local variable
+    var localVariable = 'I am a local variable';
+    print(localVariable);
+  }
+}
+
+void main() {
+  print(globalVariable);
+
+  var myObject = MyClass();
+  print(myObject.instanceVariable);
+
+  print(MyClass.staticVariable);
+
+  myObject.myMethod();
+}
+```
+
 <h1 align="center"> <a href="/day2.md">Day 2 notes</a></h1>
