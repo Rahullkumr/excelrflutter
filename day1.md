@@ -111,26 +111,40 @@ void main(){
 
 - Global variables
   - declared outside all classes 
-  - can be accessed from anywhere in the code
-  - available throughout the entire lifecycle of the application
+  - scope: throughout the application(from anywhere in the code)
+  - memory allocation: when the application starts
+  - memory release: when the application ends
+  - stored in: HEAP memory
+    - available throughout the entire lifecycle of the application
 
 - Local variables
-  - defined within a method, constructor or block
-  - created when the method, constructor or block is entered and destroyed as soon as it is left 
-  - can be accessed only within the method, constructor or block.
-
+  - declared inside method, constructor or block
+  - scope: within the method, constructor or block
+  - memory allocation: when the method, constructor or block is entered  
+  - memory release: when the method, constructor or block completes execution
+  - stored in: STACK memory
+  
 - Instance variables
-  - defined within a class but outside any method. 
-  - They belong to an instance/object of the class, i.e,
-  - each object of the class has its own copy of the instance variable
-  - [refer it for better understanding](https://medium.com/@MrArc/dart-variables-7dbcc943448d)
+  - declared inside a class but outside any method, constructor or block
+  - scope: within the class
+  - memory allocation: when the object of the class is created
+  - memory release: when the object of the class is destroyed
+  - stored in: HEAP memory
+
+    - They belong to an instance/object of the class, i.e,
+    - each object of the class has its own copy of the instance variable
+    - [refer it for better understanding](https://medium.com/@MrArc/dart-variables-7dbcc943448d)
 
 - Static variables
-  - also defined within a class but outside any method. 
-  - belong to the class itself rather than to any instance of the class.
-  - can not be accessed using the object of the class.
-  - accessed only using class name.
-  - There is only one copy of a static variable, and it is shared among all instances of the class.
+  - declared inside a class but outside any method and followed by `static` keyword
+  - scope: within the class
+  - memory allocation: when the class is loaded
+  - memory release: when the class is unloaded
+  - stored in: HEAP memory
+    - belong to the class itself rather than to any object
+    - can not be accessed using the object of the class
+    - accessed only using class name
+    - There is only one copy of a static variable, and it is shared among all instances of the class.
 
 ```dart
 // Global variable
@@ -161,5 +175,14 @@ void main() {
   myObject.myMethod();
 }
 ```
+## Stack vs Heap Memory
+
+  > Both memory are located in a computer’s RAM
+
+- [Refer this video](https://www.youtube.com/watch?v=5OJRqkYbK-4&t=14s)
+
+
+
+
 
 <h1 align="center"> <a href="/day2.md">Day 2 notes</a></h1>
