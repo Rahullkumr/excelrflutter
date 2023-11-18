@@ -121,9 +121,9 @@ void main(){
 
 - Instance variables
   - defined within a class but outside any method. 
-  - They belong to an instance of the class, i.e,
-  - each instance of the class has its own copy of the instance variable
-  - that's why can be accessed only using the object of the class
+  - They belong to an instance/object of the class, i.e,
+  - each object of the class has its own copy of the instance variable
+  - [refer it for better understanding](https://medium.com/@MrArc/dart-variables-7dbcc943448d)
 
 - Static variables
   - also defined within a class but outside any method. 
