@@ -145,6 +145,7 @@ void main(){
     - can not be accessed using the object of the class
     - accessed only using class name
     - There is only one copy of a static variable, and it is shared among all instances of the class.
+    - The static method is useful when we want to use it in other classes
 
 ```dart
 // Global variable
