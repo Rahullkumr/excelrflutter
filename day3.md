@@ -45,7 +45,9 @@
 
 ## Pillars of OOPS
 
-1. Polymorphism
+1. Polymorphism 
+  - Overloading: `NOT SUPPORTED IN DART`
+  - Overriding: same method name, same parameters
 2. Inheritance
 3. Encapsulation
 4. Abstraction (example: a button in tv remote)
@@ -108,8 +110,7 @@
 ```dart
     class Student{
         var name = "";
-        Student(var name){
-            this.name = name; 
+        Student(this.name){
             // when parameter name is same as instance variable name
             // this keyword is used to refer to the instance variable
             print("Constructor called");
@@ -128,5 +129,70 @@
         s1.play();
     }
 ```
+
+## Inheritance
+
+- Inheritance is the ability of one class to inherit properties and behaviour from another class
+- except constructors
+- Inheritance is used for code reusability 
+
+## 3 Types of Inheritance in Dart
+
+1. Single Inheritance
+  - A class can inherit from only one class
+2. Multi-level Inheritance
+  - A class can inherit from a class which is already inheriting from another class
+3. Hierarchical Inheritance
+  - Multiple classes can inherit from a single parent class
+
+```dart
+  // multi-level inheritance
+  class Mammal{
+    var mammalEyes = 2;
+    mammalSleeping(){
+      print("Mammal sleeps");
+    }
+  }
+  class Animal extends Mammal{
+    var animalLegs = 4;
+
+    void animalEating(){
+      print("Animal eats");
+    }
+  }
+
+  class Tiger extends Animal {
+  var eyes = 2;
+  var legs = 4;
+  int? noOfHours; // ? is used to make the variable nullable
+
+  // void tigerPlay(this.noOfHours) { <== only possible in constructors
+
+  void tigerPlay(noOfHours) {
+    this.noOfHours = noOfHours;
+    // this keyword is used to refer to the instance variable when parameter name is same as instance variable name
+    print("Tiger plays for $noOfHours hours");
+  }
+  
+  @override
+  void animalEating(){
+    super.animalEating(); // super is used to call to instant parent class
+    print("Tiger Eating GOOD FOOD");
+  }
+}
+
+void main() {
+  var tiger = Tiger();
+  tiger.tigerPlay(5);
+  tiger.mammalSleeping();
+  tiger.animalEating();
+}
+```
+
+
+
+
+
+
 
 <h1 align="center"> <a href="/day4.md">Day 4 notes</a></h1>
