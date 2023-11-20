@@ -46,8 +46,8 @@
 ## Pillars of OOPS
 
 1. Polymorphism 
-  - Overloading: `NOT SUPPORTED IN DART`
-  - Overriding: same method name, same parameters
+    - Overloading: `NOT SUPPORTED IN DART`
+    - Overriding: same method name, same parameters
 2. Inheritance
 3. Encapsulation
 4. Abstraction (example: a button in tv remote)
@@ -90,22 +90,22 @@
 
   1. DEFAULT constructor
 
-    > - hidden, automatically provided by compiler if no constructor is present in the class
+      > - hidden, automatically provided by compiler if no constructor is present in the class
 
-    > - does not play a role in the initialization
+      > - does not play a role in the initialization
 
-    > - The primary use of the default constructor is to create an instance of the class
+      > - The primary use of the default constructor is to create an instance of the class
 
-    > - to perform some setup or initialization when an object is created, you can define your own constructor to replace the default one.
+      > - to perform some setup or initialization when an object is created, you can define your own constructor to replace the default one.
     
   2. 0-arg constructor
-    > created by coder, has no parameters 
+      > created by coder, has no parameters 
   3. parameterized constructor
-    > has parameters
+      > has parameters
   4. named constructor
-    > has a name and is used to create multiple constructors for a class
+      > has a name and is used to create multiple constructors for a class
   5. constant constructor
-    > has a const keyword and is used to create compile time constants
+      > has a const keyword and is used to create compile time constants
 
 ```dart
     class Student{
@@ -139,11 +139,11 @@
 ## 3 Types of Inheritance in Dart
 
 1. Single Inheritance
-  - A class can inherit from only one class
+    - A class can inherit from only one class
 2. Multi-level Inheritance
-  - A class can inherit from a class which is already inheriting from another class
+    - A class can inherit from a class which is already inheriting from another class
 3. Hierarchical Inheritance
-  - Multiple classes can inherit from a single parent class
+    - Multiple classes can inherit from a single parent class
 
 ```dart
   // multi-level inheritance
