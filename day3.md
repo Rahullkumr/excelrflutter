@@ -52,6 +52,28 @@
 3. Encapsulation
 4. Abstraction (example: a button in tv remote)
 
+<details> 
+  <summary>My Question on Method Overloading</summary>
+  <p>
+    <br><b>Qn: </b><br> <br> Why some languages like <u>Dart and Python don't have method overloading</u>? what is the problem with method overloading?
+  </p>
+
+  <p>
+    <b>Ans: </b>
+    <ul>
+      <li>
+        This is due to their dynamic nature and the way they handle function arguments.
+      </li><br>      
+      <li>
+        In these languages, you can pass varying numbers and types of arguments to a function, which makes method overloading unnecessary. 
+        For example, you can use optional parameters, default values, or collections (like lists or dictionaries) to achieve similar results to method overloading.
+      </li><br>
+      <li>
+        Instead of method overloading, Dart and Python offer other features like default parameters and named parameters to achieve similar functionality with less complexity.     
+    </ul>  
+  </p>
+</details>
+
 ## Class and Object
 
 - Class is a blueprint of an object
@@ -79,8 +101,8 @@
     </ul>
     <b>A :</b> 
       <ul>
-        <li>If a developer creates a constructor and does not explicitly initialize the instance variables, those variables will still be initialized with their default values.</li>
-        <li>The <u><i>automatic initialization</i></u> of instance variables with default values is done <u><i>by Dart runtime system</i></u> when an object is created. This is a built-in feature of the language and happens regardless of whether a constructor is defined or not.</li>
+        <li>If a developer creates a constructor and does not explicitly initialize the instance variables, those variables will still be initialized with their default values.</li><br>
+        <li>The <i><u><b>automatic initialization</b></u></i> of instance variables with default values is done <i><u><b>by Dart runtime system</b></u></i> when an object is created. This is a built-in feature of the language and happens regardless of whether a constructor is defined or not.</li><br>
         <li>The <b>default constructor</b> provided by the compiler <strike>does not play a role in initialization.</strike></li>
       </ul>
   </p>
