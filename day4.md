@@ -191,10 +191,77 @@ void main() {
 
 ```
 
+## Synchronous  vs Asynchronous Programming
+
+<img src="https://miro.medium.com/v2/resize:fit:607/1*3s0x80mZdGNF2W-rkNXI1Q.png">
+
+- Synchronous programming is the traditional way of programming.
+- Asynchronous programming is a new way of programming.
+
+- When you execute something synchronously, you wait for it to finish before moving on to another task. 
+
+- When you execute something asynchronously, you can move on to another task before it finishes.
+
+- Here are some common asynchronous operations:
+  - Fetching data over a network.
+  - Writing to a database.
+  - Reading data from a file.
+
+```dart
+// synchronous code, executed line by line without waiting for 5s
+
+Future<String> getData(){
+  return Future.delayed(const Duration(seconds: 5), (){
+    return " Some data from the server";
+  });
+}
+
+void main(){
+  print("main fn started");
+  
+  var res = getData();
+  print("received $res");
+  
+  print("main fn ended");
+}
+```
+```dart
+// Partially asynchronous code, executed line by line waiting for 5s
+
+Future<String> getData(){
+  return Future.delayed(const Duration(seconds: 5), (){
+    return " Some data from the server";
+  });
+}
+
+void main() async{
+  print("main fn started");
+  
+  var res = await getData();
+  print("received $res");
+  
+  print("main fn ended");
+}
+```
+```dart
+// Fully asynchronous code, executed randomly, skipped the 5s wait 
+
+Future<String> getData() {
+  return Future.delayed(const Duration(seconds: 5), () {
+    return " Some data from the server";
+  });
+}
+
+void main() {
+  print("main fn started");
+
+  getData().then((value) => print("received $value"));
+
+  print("main fn ended");
+}
+
+```
 
 
 
-
-
-
-<h1 align="center"> <a href="/day5.md">Day 5 notes</a></h1>
+<h1 align="center"> <a href="/day5.md">Day 5 Flutter</a></h1>
