@@ -9,13 +9,13 @@
 - `extends` keyword is used to extend the abstract class
 - abstract method is a method without body 
 - can not create object of abstract class
-- whenever you extend the abstract class, you have to implement all the abstract methods 
-
+- whenever you extend the abstract class:
+    - Compulsory: to implement abstract methods but non abstract methods are optional
 - abstract class can have abstract methods and non abstract methods
 - Abstract classes can have constructors.
 - A class can extend only one abstract class (since dart doesn't support multiple inheritance)
 
-    > eg: If you want to work at Google, you need to follow some protocols.
+> eg: If you want to work at Google, you need to follow some protocols.
 
 ```dart
     abstract class GoogleCompany{
@@ -71,9 +71,11 @@
 - An interface is meant to be a blueprint for other classes 
 - Dart has no interface keyword. Instead, all classes are implicit interfaces 
 - This means we can use any class as an interface 
-- Compulsory: to implement all methods of interface in the child class
+- whenever we inherit an interface:
+    - Compulsory: to implement both abstract methods as well as non-abstract methods
+
 - `implements` keyword is used to implement interface
-- Interface can't have constructor but the implementing class can have constructor
+- Interface can't have constructors
     > interfaces are not meant to be instantiated directly. Instead, they are used to define contracts that other classes must adhere to.
 - A class can implement multiple interfaces but only can extend a single class.
 
@@ -123,28 +125,70 @@
 
 > to achieve multiple inheritance
 
+[Mixin vs Inheritance](https://www.dhiwise.com/post/flutter-mixins-vs-inheritance-choosing-the-right-approach)
+
+- It’s a way to reuse code across multiple classes.
+- Mixin allows a programmer to inject some code into a class
 - `with` keyword is used to implement mixin
+- Mixins don't have constructors
+- Mixins can't be instantiated directly
+- useful for adding additional functionality to a class without modifying its inheritance hierarchy
+- Promotes code reusability and reduces code duplication
+- You can also integrate interfaces or abstract classes with mixins, making them a top choice among developers
+- Mixins are compiled at runtime, which can make debugging more difficult
+- Mixins are more flexible than inheritance because they do not require the classes to be related
+
 
 ```dart 
-    mixin Printer {
-        void printData() {
-            print('Printing data...');
-        }
-    }
+import 'package:flutter/material.dart';
 
-    class Application {
-        void execute() {
-            print('Executing application...');
-        }
-    }
+mixin TextMixin {
+  TextStyle headingTextStyle() {
+    return TextStyle(
+      fontSize: 24.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.green,
+    );
+  }
 
-    class PrintApplication extends Application with Printer {}
+  TextStyle bodyTextStyle() {
+    return TextStyle(
+      fontSize: 16.0,
+      color: Colors.grey,
+    );
+  }
+}
 
-    void main() {
-        var app = PrintApplication();
-        app.execute();  // Outputs: Executing application...
-        app.printData();  // Outputs: Printing data...
-    }
+class MyWidget extends StatelessWidget with TextMixin {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Welcome',
+          style: headingTextStyle(),
+        ),
+        Text(
+          'Lorem ipsum dolor sit amet',
+          style: bodyTextStyle(),
+        ),
+      ],
+    );
+  }
+}
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: MyWidget(),
+        ),
+      ),
+    ),
+  );
+}
+
 ```
 
 
