@@ -129,8 +129,8 @@
 
    ```dart
    String name = 'Ram';
-   // prints true
-   print(name is String);
+   
+   print(name is String); // prints true
    ```
 
 4. Bitwise Operators (&, |, ~, ^, <<, >>)
@@ -148,7 +148,7 @@
 6. Logical Operators (&&, ||, !)
 
    > - Logical operators are only applicable to boolean expressions
-   > - non-zero numbers are not considered as true and zero as false
+   > - non-zero numbers are not considered as true and zero not as false
    > - 0 and 1 are not boolean instead int
 
 7. Conditional Operators / Ternary operators (?: and ??)
@@ -156,7 +156,7 @@
    - (condition ? expr1 : expr2)
      > If condition is true, evaluates expr1 (and returns its value); otherwise, evaluates and returns the value of expr2
    - (expr1 ?? expr2)
-     > If expr1 is not-null, returns its value; otherwise, evaluates and returns the value of expr2
+     > If expr1 is null, returns expr2; otherwise, evaluates and returns the value of expr1
 
    ```dart
        int a = 5, b = 8;
