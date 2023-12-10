@@ -104,7 +104,8 @@
 - constructor looks like a method but it is not a method, i.e it can't be called like a method
 - constructor will be called automatically when an object is created
 - constructor has the same name as the class
-- constructor is `used to initialize the instance variables` of a class, except DEFAULT constructor
+- constructors are `used to initialize the instance variables`, except DEFAULT constructor
+- The <b>DEFAULT constructor</b> provided by the compiler <strike>does not play a role in initialization.</strike>
 
 <details>
   <summary>My Question</summary>
