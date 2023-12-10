@@ -62,6 +62,12 @@
         var hardware = HardwareGuys();
         hardware.wearMask();
     }
+
+    /* OUTPUT
+    show your id card
+    have Biryani in lunch
+    wear cloth mask
+    */
 ```
 
 ## Interface
@@ -69,7 +75,7 @@
 > to achieve multiple inheritance
 
 - An interface is meant to be a blueprint for other classes 
-- Dart has no interface keyword. Instead, all classes are implicit interfaces 
+- `Dart has no interface keyword`. Instead, all classes are implicit interfaces 
 - This means we can use any class as an interface 
 - whenever we inherit an interface:
     - Compulsory: to implement both abstract methods as well as non-abstract methods
