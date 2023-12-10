@@ -129,11 +129,11 @@
 
       > - hidden, automatically provided by compiler if no constructor is present in the class
 
-      > - does not play a role in the initialization
+      > - does not play a role in initialization
 
-      > - The primary use of the default constructor is to create an instance of the class
+      > - The primary use of default constructor is to create an instance of a class
 
-      > - to perform some setup or initialization when an object is created, you can define your own constructor to replace the default one.
+      > - to perform some setup or initialization when an object is created, define own constructor to replace the default one.
     
   2. 0-arg constructor
       > created by coder, has no parameters 
@@ -149,7 +149,7 @@
         var name = "";
         Student(this.name){
             // when parameter name is same as instance variable name
-            // this keyword is used to refer to the instance variable
+            // 'this' keyword is used to refer to the instance variable
             print("Constructor called");
         }
         void study(){
@@ -165,6 +165,12 @@
         s1.study();
         s1.play();
     }
+
+    // output
+    Constructor called
+    Ram
+    Ram studies
+    Student plays
 ```
 
 ## Inheritance
@@ -207,7 +213,8 @@
 
   void tigerPlay(noOfHours) {
     this.noOfHours = noOfHours;
-    // this keyword is used to refer to the instance variable when parameter name is same as instance variable name
+    // this keyword is used to refer to the instance variable 
+    // when parameter name is same as instance variable name
     print("Tiger plays for $noOfHours hours");
   }
   
@@ -224,6 +231,12 @@ void main() {
   tiger.mammalSleeping();
   tiger.animalEating();
 }
+
+// output
+Tiger plays for 5 hours
+Mammal sleeps
+Animal eats
+Tiger Eating GOOD FOOD
 ```
 
 
