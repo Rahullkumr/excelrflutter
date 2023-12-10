@@ -57,7 +57,7 @@
 - Supports both functional and OOPS
   - Dart, Kotlin, Swift, Python, JavaScript, C++, Java, Apex, etc
 
-## Pillars of OOPS
+## Pillars of OOPS (PIE A)
 
 1. Polymorphism 
     - Overloading: `NOT SUPPORTED IN DART`
