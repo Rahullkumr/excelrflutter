@@ -202,7 +202,39 @@
 
 - if-else
 - switch-case
+
+    ```dart
+    var animal = 'Dog';
+
+    switch (animal) {
+        case 'Dog':
+            print('You have a dog.');
+            break;
+        case 'Bird':
+            print('You have a bird.');
+            break;
+        default:
+            print('Animal not recognized.');
+    }
+    ```
+
 - for loop (for, for-in, for-each)
+    ```dart
+    // for loop
+    for (var i = 0; i < 5; i++) {
+        print(i); // 0 1 2 3 4
+    }
+
+    // for-in loop
+    var word = ['f', 'o', 'r', 'i', 'n'];
+    
+    for (var letters in word) {
+        print(letters); // f o r i n
+    }
+
+    // for-each loop
+    word.forEach(print); // f o r i n
+    ```
 - while loop `when we don't know the number of iterations`
 - do-while loop `executes once then checks the condition`
 - break and continue
