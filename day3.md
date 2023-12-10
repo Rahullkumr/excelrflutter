@@ -181,6 +181,8 @@
 
 ## 3 Types of Inheritance in Dart
 
+<img src='inheritanceDart.png' alt="Types of Inheritance image">
+
 1. Single Inheritance
     - A class can inherit from only one class
 2. Multi-level Inheritance
