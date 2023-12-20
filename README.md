@@ -15,3 +15,4 @@
 - [Day 4 notes](/day4.md)
 - [Day 5 notes](/day5.md)
 - [Day 6 notes](/day6.md)
+- [Day 7 notes](/day7.md)

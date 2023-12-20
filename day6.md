@@ -1,5 +1,10 @@
 <h1 align="center"> Day 6 (Flutter Excelr)</h1>
 
+
+## Today's App 
+
+<img src="Images/day6.jpg">
+
 ### main.dart
 
 ```dart
@@ -120,9 +125,6 @@ class ContactScreen extends StatelessWidget {
 }
 
 ```
-## Today's App 
-
-<img src="Images/day6.jpg">
 
 
 <br><br>
