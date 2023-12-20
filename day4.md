@@ -10,7 +10,7 @@
 - abstract method is a method without body 
 - can not create object of abstract class
 - whenever you extend the abstract class:
-    - `Compulsory`: to implement abstract methods but non abstract methods are optional
+    - `Compulsory`: to implement abstract methods but <strike>non abstract methods</strike> are optional
 - abstract class can have both abstract methods and non abstract methods
 - Abstract classes can have constructors.
 - A class can extend only one abstract class (since dart doesn't support multiple inheritance)
@@ -75,12 +75,12 @@
 > to achieve multiple inheritance
 
 - An interface is meant to be a blueprint for other classes 
+- `implements` keyword is used to implement interface
 - `Dart has no interface keyword`. Instead, all classes are implicit interfaces 
 - This means we can use any class as an interface 
 - whenever we inherit an interface:
-    - Compulsory: to implement both abstract methods as well as non-abstract methods
+    - `Compulsory`: to implement `both` abstract methods as well as non-abstract methods
 
-- `implements` keyword is used to implement interface
 - Interface can't have constructors
     > interfaces are not meant to be instantiated directly. Instead, they are used to define contracts that other classes must adhere to.
 - A class can implement multiple interfaces but only can extend a single class.
