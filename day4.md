@@ -10,8 +10,8 @@
 - abstract method is a method without body 
 - can not create object of abstract class
 - whenever you extend the abstract class:
-    - Compulsory: to implement abstract methods but non abstract methods are optional
-- abstract class can have abstract methods and non abstract methods
+    - `Compulsory`: to implement abstract methods but non abstract methods are optional
+- abstract class can have both abstract methods and non abstract methods
 - Abstract classes can have constructors.
 - A class can extend only one abstract class (since dart doesn't support multiple inheritance)
 
