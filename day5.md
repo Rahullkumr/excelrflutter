@@ -37,9 +37,6 @@ class MyApp extends StatelessWidget {
 }
 
 ```
-## Today's App 
-
-<img src="Images/day5.jpg">
 
 
 <br><br>
