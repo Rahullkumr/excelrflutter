@@ -115,6 +115,43 @@ getList() {
 }
 
 ```
+## other way (listview.dart)
+
+```dart
+import 'package:flutter/material.dart';
+
+class ListScreen extends StatelessWidget {
+  const ListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("List of items"),
+        centerTitle: true,
+      ),
+      body: ListView(        
+        children: [
+          getList("1", "List 1", "Sub title 1"),
+          getList("2", "List 2", "Sub title 2"),
+          getList("3", "List 3", "Sub title 3")
+        ],
+      ),
+    );
+  }
+
+  final String lead = "", titl = "", subtitl = "";
+
+  getList(lead, titl, subtitl){
+    return ListTile(
+      leading: Text(lead),
+      title: Text(titl),
+      subtitle: Text(subtitl),
+      trailing: const Icon(Icons.edit),
+    );
+  }
+}
+```
 
 <br><br>
 <h1 align="center"> <a href="/day8.md">Day 8 Flutter</a></h1>
