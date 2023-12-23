@@ -4,7 +4,7 @@
 - Long list i.e ListView.builder()
     > Adapter in Android
 - alertbox
-- text on click of button
+- input text and display it on click of submit button (using setState)
 
 
 ## Disadvantages of ListView
@@ -66,7 +66,97 @@ getLongList() {
 ```
 
 
+## Alertbox
 
+<img src="Images/alert.jpg" alt="day 8 image" alt="alert box image">
+
+```dart
+ElevatedButton(
+  onPressed: () {
+    showDialog(context: context, builder: (ctx){
+      return AlertDialog(        
+        title: const Text("My alert box"),                
+        content: const Text("Are you fine"),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.of(ctx).pop();
+          }, child: const Text("OK"))
+        ],
+      );
+    });
+  },
+  child: const Text("show alert"),
+)
+```
+
+
+# Stateful widget
+
+<img src="Images/textInputDisplay.jpg" alt="input image">
+
+```dart
+import 'package:flutter/material.dart';
+
+class InputScreen extends StatefulWidget {
+  const InputScreen({super.key});
+  @override
+  State<InputScreen> createState() => _InputScreenState();
+}
+
+class _InputScreenState extends State<InputScreen> {
+  String name = '';
+  // important
+  TextEditingController inputcontroller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Input Screen"),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: inputcontroller, // important
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        name = inputcontroller.text;
+                      });
+                    },
+                    child: const Text("Submit"),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text("Input text is: $name"),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
 
 <br><br>
 <h1 align="center"> <a href="/day9.md">Day 9 Flutter</a></h1>
