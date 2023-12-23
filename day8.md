@@ -21,7 +21,8 @@ everything gets loaded on the screen,leads to memory occupancy
 
 ```dart
 
-// The lambda fn is called once for each element in the list, and the return value of the function is used to populate the element.
+// The lambda fn is called once for each element in the list, 
+// and the return value of the function is used to populate the element.
 
 void main() {
   print(
