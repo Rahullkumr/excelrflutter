@@ -1,6 +1,6 @@
 <h1 align="center"> Day 9 (Flutter Excelr)</h1>
 
-## Navigation
+## Navigation / Routing
 > navigating b/w two screens
 
 - called Routes in Flutter
