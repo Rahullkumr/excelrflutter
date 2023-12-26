@@ -1,5 +1,10 @@
 <h1 align="center"> Day 4 (Flutter Excelr)</h1>
 
+1. [Abstraction](#abstraction)
+2. [Interface](#interface)
+3. [Mixins](#mixins)
+4. [Synchronous vs Asynchronous Programming](#synchronous-vs-asynchronous-programming)
+
 ## Abstraction
 
 >  process of hiding the internal implementation and showing only the functionality to the user.
@@ -197,7 +202,7 @@ void main() {
 
 ```
 
-## Synchronous  vs Asynchronous Programming
+## Synchronous vs Asynchronous Programming
 
 <img src="https://miro.medium.com/v2/resize:fit:607/1*3s0x80mZdGNF2W-rkNXI1Q.png">
 

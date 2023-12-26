@@ -1,5 +1,13 @@
 <h1 align="center"> Day 2 (Flutter Excelr)</h1>
 
+1. [Data Types](#data-types)
+2. [Collections / Iterables](#collections--iterables)
+3. [Type Casting in Dart](#type-casting-in-dart)
+4. [Operators](#operators)
+5. [Control flow in Dart](#control-flow-in-dart)
+6. [Functions in Dart](#functions-in-dart)
+
+
 ## Data Types
 
 > Always prefer `var` to declare variables

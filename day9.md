@@ -1,5 +1,11 @@
 <h1 align="center"> Day 9 (Flutter Excelr)</h1>
 
+1. [Navigation / Routing](#navigation--routing)
+2. [Dynamic routing](#dynamic-routing)
+3. [Static routing (Named routing)](#static-routing-named-routing)
+4. [Details about `push`](#details)
+5. [Passing data b/w routes](#passing-data-bw-routes)
+
 ## Navigation / Routing
 > navigating b/w two screens
 

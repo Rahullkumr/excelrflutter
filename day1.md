@@ -1,5 +1,11 @@
 <h1 align="center"> Day 1 (Flutter Excelr)</h1>
 
+1. [What is Flutter?](#what-is-flutter)
+2. [Why Flutter?](#why-flutter)
+3. [Dart Language](#dart-language)
+4. [Variables in Dart](#variables-in-dart)
+5. [Types of variables](#types-of-variables)
+6. [Stack vs Heap Memory](#stack-vs-heap-memory)
 
 ## learn how to learn
 
