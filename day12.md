@@ -2,6 +2,11 @@
 
 ## Working with API - Practical
 
+<img src="Images/api.jpg" alt="api screenshot">
+
+
+## code
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -27,7 +32,6 @@ class Posts {
 
 class MyApi extends StatefulWidget {
   const MyApi({super.key});
-
   @override
   State<MyApi> createState() => _MyApiState();
 }
@@ -50,17 +54,30 @@ class _MyApiState extends State<MyApi> {
     // finally response data is stored in response variable
 
     var responseData = json.decode(response.body);
-    // what about response.statusCode? ==> statusCode: 200 => success || 404 => not found
-    // response.headers ==> {cache-control: max-age=43200, content-type: application/json; charset=utf-8, expires: -1, pragma: no-cache}
+    // response.statusCode ==> statusCode: 200 => success || 404 => not found
+    // response.headers    ==> {cache-control: max-age=43200, content-type: application/json; charset=utf-8, expires: -1, pragma: no-cache}
+    // response.body       ==> gives the entire HTTP response data in raw JSON format
+    // json.decode()       ==> decode() fn is from dart:convert;
+    //    Takes JSON raw data as input and converts it into a Dart data structure (usually Map<String, dynamic> or List or List of Maps).
+    //    This process is called JSON parsing or deserialization; serialization(converting dart => json)
+    // Why to decode or do deserialization?
+    //  bcoz  Dart doesn't support json; 
+    //  to structure data properly and gain access to properties of data structure(Map, List, etc) like [0], .first, .add('lol'), etc
+
+
+
 
     // creating a list to store input data
     List<Posts> users = [];
     for (var singlePost in responseData) {
+      // responseData is a "List of Maps" i.e [{},{},{}......]
       Posts user = Posts(
-          id: singlePost["id"],
-          userId: singlePost["userId"],
-          title: singlePost["title"],
-          body: singlePost["body"]);
+        id: singlePost["id"],
+        userId: singlePost["userId"],
+        title: singlePost["title"],
+        body: singlePost["body"],
+      );
+
       // Adding user to the list
       users.add(user);
     }
@@ -75,15 +92,20 @@ class _MyApiState extends State<MyApi> {
         centerTitle: true,
       ),
       body: FutureBuilder(
+        // used to build UIs which contain future data
+        // The FutureBuilder widget tracks the state of the Future and calls the builder function with the snapshot object whenever its state changes
         future: getRequest(),
         builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+          // snapshot object holds the "data" returned by Future(null otherwise)
+          // also captures the current state i.e ConnectionState(none, waiting, active, done) of the asynchronous operation and helps in dynamically building UI
           if (snapshot.data == null) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else {
             return ListView.builder(
-              // itemCount: snapshot.data.length,
+              itemCount: snapshot.data!.length,
+              // ensures that the list renders only as many items as there are items in the fetched data
               itemBuilder: (ctx, index) => Card(                
                 margin: const EdgeInsets.all(5),
                 color: Colors.brown,
@@ -115,7 +137,7 @@ class _MyApiState extends State<MyApi> {
     );
   }
 }
-```
 
+```
 <br><br>
 <h1 align="center"> <a href="/day13.md">Day 13 Flutter</a></h1>
