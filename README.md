@@ -19,4 +19,5 @@
 - [Day 08: List generator, Longlist, alertbox, STATEFUL APP](/day8.md)
 - [Day 09: Navigation, Routing](/day9.md)
 - [Day 10: Bottom Navigation Bar](/day10.md)
-- [Day 11: Playing with APIs](/day11.md)
+- [Day 11: Network call (API - Theory)](/day11.md)
+- [Day 12: Playing with APIs - Practical](/day12.md)
