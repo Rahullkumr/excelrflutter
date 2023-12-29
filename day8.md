@@ -55,7 +55,7 @@ getLongList() {
     // get data from generate method
     var generatedList = generateListElements();
     var myListView = ListView.builder(
-      itemCount: 10, // removes the red error (visible in screenshot)
+      itemCount: generatedList.length, // removes the red error (visible in screenshot)
       // tells exactly how many items to be built. 
       itemBuilder: (context, index) {
         // context = this screen i.e this class; index = index of list items
