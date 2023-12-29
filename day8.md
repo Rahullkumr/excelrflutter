@@ -54,14 +54,18 @@ output
 getLongList() {
     // get data from generate method
     var generatedList = generateListElements();
-    var myListView = ListView.builder(itemBuilder: (context, index) {
-      // context = this screen i.e this class; index = index of list items
-      return ListTile(
-        title: Text(
-          generatedList[index],
-        ),
-      );
-    });
+    var myListView = ListView.builder(
+      itemCount: 10, // removes the red error (visible in screenshot)
+      // tells exactly how many items to be built. 
+      itemBuilder: (context, index) {
+        // context = this screen i.e this class; index = index of list items
+        return ListTile(
+          title: Text(
+            generatedList[index],
+          ),
+        );
+      },
+    );
     // this builder is going to help in building the item(each row) one by one
     return myListView;
   }
