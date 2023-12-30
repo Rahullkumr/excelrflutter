@@ -7,6 +7,10 @@
 - Flutter certified
 - currently Senior Manager and Corporate Trainer
 
+## Certificate
+
+<img src="ExcelrFlutter.jpg" alt="certificate">
+
 ## Days:
 
 - [Day 01: Basic - Dart and Flutter](/day1.md)
@@ -21,3 +25,5 @@
 - [Day 10: Bottom Navigation Bar](/day10.md)
 - [Day 11: Network call (API - Theory)](/day11.md)
 - [Day 12: Playing with APIs - Practical](/day12.md)
+- [Day 13: Shared Preferences](/day13.md)
+- [Left Navigation Panel (SELF)](/day14.md)
