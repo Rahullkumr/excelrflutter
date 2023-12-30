@@ -16,8 +16,8 @@
 - JSON - JavaScript Object Notation
 - HTTP - Hyper Text Transfer Protocol
 - HTTPS - Hyper Text Transfer Protocol Secure
-- URL - Uniform Resource Locator
-- URI - Uniform Resource Identifier
+- URL - Uniform Resource Locator    `https://example.com/path`
+- URI - Uniform Resource Identifier `https://example.com/path?arg=value`
 - GET - Read, POST - Create, PUT - Update, DELETE - Delete
 - API Key - Unique key to identify the user
 - API Endpoint - URL to access the API
