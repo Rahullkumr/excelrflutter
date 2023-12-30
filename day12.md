@@ -1,6 +1,6 @@
 <h1 align="center"> Day 12 (Flutter Excelr)</h1>
 
-## Working with API - Practical
+## How network call is done?
 
 <img src="Images/api.jpg" alt="api screenshot">
 
