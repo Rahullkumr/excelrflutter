@@ -1,5 +1,5 @@
 # excelr_flutter
-30 hours Flutter course by 16 years experience teacher
+26 hours Flutter course by 16 years experience teacher
 
 ### Trainer intro
 
@@ -26,4 +26,3 @@
 - [Day 11: Network call - Theory (API)](/day11.md)
 - [Day 12: Network call - Practical](/day12.md)
 - [Day 13: Shared Preferences](/day13.md)
-- [Left Navigation Panel (SELF)](/day14.md)
