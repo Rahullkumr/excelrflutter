@@ -1,5 +1,5 @@
 # excelr_flutter
-26 hours Flutter course by 16 years experience teacher
+30 hours Flutter course by 16 years experience teacher
 
 ### Trainer intro
 
