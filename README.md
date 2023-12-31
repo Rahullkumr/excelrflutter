@@ -25,4 +25,4 @@
 - [Day 10: Bottom Navigation Bar](/day10.md)
 - [Day 11: Network call - Theory (API)](/day11.md)
 - [Day 12: Network call - Practical](/day12.md)
-- [Day 13: Shared Preferences](/day13.md)
+- [Day 13: How to store data - Shared Preferences](/day13.md)
