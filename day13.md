@@ -1,5 +1,16 @@
 <h1 align="center"> Day 13 (Flutter Excelr)</h1>
 
+1. [Ways to store data](#ways-to-store-data)
+2. [Local memory vs remote location](#local-memory-vs-remote-location)
+3. [SQLite Database](#sqlite-database)
+4. [Shared Preferences](#shared-preferences)
+5. [Cloud Storage (Firebase)](#cloud-storage-firebase)
+    - [Features of Firebase](#features-of-firebase)
+6. [Developed App](#developed-app)
+7. [Steps to use shared preferences](#steps-to-use-shared-preferences)
+8. [Complete code](#complete-code)
+
+
 ## Ways to store data
 
 1. Local Memory (Phone memory):
@@ -103,7 +114,89 @@
 
 <img src="Images/sharedPref.jpg" alt="shared preferences screenshot">
 
-## Code
+## Steps to use shared preferences
+
+1. Add shared preferences dependency in pubspec.yaml file
+
+    ```yaml
+    dependencies:
+        flutter:
+            sdk: flutter
+        shared_preferences: ^2.0.6
+    ```
+2. Import shared preferences package in main.dart file
+
+    ```dart
+    import 'package:shared_preferences/shared_preferences.dart';
+    ```
+3. Create a controller for text field
+
+    ```dart
+    final TextEditingController _controller = TextEditingController();
+    ```
+4. Create a variable to store the saved text
+
+    ```dart
+    String _savedText = '';
+    ```
+5. Create a method to save data in shared preferences
+
+    ```dart
+    saveData() async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('saved_text', _controller.text);
+        loadSavedData();
+    }
+    ```
+6. Create a method to load data from shared preferences
+
+    ```dart
+    loadSavedData() async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        setState(() {
+        _savedText = prefs.getString('saved_text') ?? '';
+        });
+    }
+    ```
+7. Call the loadSavedData() method in initState() method
+
+    ```dart
+    @override
+    void initState() {
+        super.initState();
+        loadSavedData();
+    }
+    ```
+8. Create a text field and a button in the body of the scaffold widget
+
+    ```dart
+    TextField(
+        controller: _controller,
+        decoration: const InputDecoration(
+        labelText: "Enter text",
+        ),
+    ),
+    const SizedBox(
+        height: 20,
+    ),
+    ElevatedButton(
+        onPressed: saveData,
+        child: const Text("Save"),
+    ),
+    ```
+9. Create a text widget to display the saved text
+
+    ```dart
+    Text(
+        "Saved Data: $_savedText",
+        style: const TextStyle(
+        color: Colors.red,
+        fontSize: 30,
+        ),
+    ),
+    ```
+
+## Complete code
 
 ```dart
 import 'package:flutter/material.dart';
@@ -192,6 +285,5 @@ class _MyAppState extends State<MyApp> {
 }
 
 ```
-
 <br><br>
 <h1 align="center">Excelr Flutter Successfully Completed</h1>
