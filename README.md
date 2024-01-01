@@ -4,7 +4,8 @@
 ### Trainer intro
 
 - Kalim Ansari (16+ years experience)
-- Flutter certified
+- Flutter Certified Application Developer 
+    - [ATC - Advanced Training Consultants](https://androidatc.com/pages/Eng/Flutter-Certified-Application-Developer)
 - currently Senior Manager and Corporate Trainer
 
 ## Certificate
