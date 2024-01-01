@@ -96,11 +96,102 @@
     - Firebase provides a built-in cloud messaging system that allows you to easily send push notifications to your users.
 
 10. AdMob: 
-    - Firebase provides a built-in ad network that allows you to easily monetize your app.
-------- 
+    - Firebase provides a built-in ad network that allows you to easily monetize your app. <br><br>
 
 
-<img src="Images/.jpg" alt="shared preferences screenshot">
+## Developed App
+
+<img src="Images/sharedPref.jpg" alt="shared preferences screenshot">
+
+## Code
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final TextEditingController _controller = TextEditingController();
+  String _savedText = '';
+
+  @override
+  // life cycle of widget, this method gets called before build(), when screen loads
+  void initState() {
+    super.initState();
+    loadSavedData();
+  }
+
+  saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('saved_text', _controller.text);
+    loadSavedData();
+  }
+
+  loadSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _savedText = prefs.getString('saved_text') ?? '';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Shared Preferences"),
+            centerTitle: true,
+          ),
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                    labelText: "Enter text",
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(                  
+                  onPressed: saveData,
+                  child: const Text("Save"),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Saved Data: $_savedText",
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
 
 <br><br>
 <h1 align="center">Excelr Flutter Successfully Completed</h1>
