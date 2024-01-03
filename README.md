@@ -8,6 +8,10 @@
     - [ATC - Advanced Training Consultants](https://androidatc.com/pages/Eng/Flutter-Certified-Application-Developer)
 - currently Senior Manager and Corporate Trainer
 
+<center><br><h4>
+    <a href="https://medium.com/@flutterwtf/flutter-interview-questions-and-answers-top-30-for-pros-0cdbf1d40ebd"> Top 30 Interview questions </a></h4>
+</center>
+
 ## Certificate
 
 <img src="ExcelrFlutter.jpg" alt="certificate">
