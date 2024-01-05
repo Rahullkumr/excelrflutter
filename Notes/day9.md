@@ -80,7 +80,7 @@ getLongList() {
 
 ## Alertbox
 
-<img src="Images/alert.jpg" alt="day 9 image" alt="alert box image">
+<img src="../Images/alert.jpg" alt="day 9 image" alt="alert box image">
 
 ```dart
 ElevatedButton(
