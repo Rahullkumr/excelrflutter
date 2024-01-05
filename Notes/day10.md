@@ -1,95 +1,145 @@
 <h1 align="center"> Day 10 (Flutter Excelr)</h1>
 
-## Bottom Navigation bar
+1. [Navigation / Routing](#navigation--routing)
+2. [Dynamic routing](#dynamic-routing)
+3. [Static routing (Named routing)](#static-routing-named-routing)
+4. [Details about `push`](#details)
+5. [Passing data b/w routes](#passing-data-bw-routes)
 
-- BottomNavigationBar()
-- BottomNavigationBarItem()
+## Navigation / Routing
+> navigating b/w two screens
 
-## Bottom Navigation bar
+- called Routes in Flutter
+    - Dynamic routing 
+    - Static routing (Named routing)
 
-<img src="Images/day10a.jpg" alt="bottom navigation bar">
+## Dynamic routing
 
 ```dart
-// inside Scaffold
-
-bottomNavigationBar: BottomNavigationBar(
-    items: const [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "home",
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: "List Screen",
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.refresh),
-            label: "Random nos",
-        ),
-    ],
+ElevatedButton(
+    onPressed: (){
+        // DYNAMIC NAVIGATION
+        //Navigator.pushReplacement(
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context){
+                    return AlertScreen();
+                }
+            )
+        )
+    }, 
+    child: const Text("Next Screen"),
 )
 ```
 
-## Working code
+## Static routing (Named routing)
 
-<img src="Images/day10b.jpg" alt="bottom navigation bar homePage" width=350>
-<img src="Images/day10c.jpg" alt="bottom navigation bar alertScreen">
+- declare routes in MaterialApp and remove home: attribute
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:myapp/alert_screen.dart';
-import 'package:myapp/text_input_display.dart';
+MaterialApp(
+    routes: {
+        ('/'):(context) => Home(),
+        ('/input'):(context) => InputScreen(),
+        ('/alert'):(context) => AlertScreen(),
+    },
+    debugShowCheckedModeBanner: false,
+    title: 'Day9',
+    // home: Home(),
+)
+```
+```dart
+ElevatedButton(
+    onPressed: (){
+        // STATIC NAVIGATION
+        Navigator.pushNamed(context, "/alert");
+    }, 
+    child: const Text("Go to Input Screen"),
+)
+```
 
-class LandingScreen extends StatefulWidget {
-  const LandingScreen({super.key});
+## Details
+
+- push: 
+    > dynamic navigation; uses STACK 
+    - adds the new screen on top of the current screen in stack 
+    - gives back button to go to previous screen
+
+- pushReplacement:
+    > dynamic navigation; uses STACK 
+    - replaces the current screen with new screen in stack
+    - going back is not possible
+
+- pushNamed:
+    > STATIC navigation, already declared the route names; uses STACK 
+    - adds the new screen on top of the current screen in stack 
+    - gives back button to go to previous screen
+
+## Passing data b/w routes
+
+```dart
+// data passing screen
+ElevatedButton(
+    onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) {
+                    return Home(
+                        dataRec: name, // data being passed
+                        // name is the variable which is storing input
+                    );
+                },
+            ),
+        );
+    },
+    child: const Text("goto HomePage"),
+)
+```
+
+```dart
+// receiving screen
+
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  String? dataRec;
+  Home({required this.dataRec});
 
   @override
-  State<LandingScreen> createState() => _LandingScreenState();
+  State<StatefulWidget> createState(){
+    return HomeState(dataRec!);
+  }
 }
 
-class _LandingScreenState extends State<LandingScreen> {
-  var myCurrentIndex = 0;
-  var screens = [
-    const LandingScreen(),
-    const AlertScreen(),
-    const InputScreen()
-  ];
+class HomeState extends State<Home> {
+  String dataRec;
+  HomeState(this.dataRec);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[myCurrentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.amberAccent,
-        iconSize: 30,
-        currentIndex: myCurrentIndex, // makes icon active onTap
-        onTap: (index) { // imp
-          setState(() {
-            myCurrentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
-            label: "Alert",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.input),
-            label: "Input",
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: const Text("Home Page"),
+        centerTitle: true,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+           Center(
+            child: Text("Recieved Data is: $dataRec"),
           ),
         ],
       ),
     );
   }
 }
-
 ```
-
+<img src="Images/day9a.jpg" alt="sending image">
+<img src="Images/day9b.jpg" alt="receiving image">
 
 
 <br><br>
-<h1 align="center"> <a href="/day11.md">Day 11 Flutter</a></h1>
+<h1 align="center"> <a href="/Notes/day11.md">Day 11 Flutter</a></h1>

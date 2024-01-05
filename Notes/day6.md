@@ -128,4 +128,4 @@ class ContactScreen extends StatelessWidget {
 
 
 <br><br>
-<h1 align="center"> <a href="/day7.md">Day 7 Flutter</a></h1>
+<h1 align="center"> <a href="/Notes/day8.md">Day 8 Flutter</a></h1>

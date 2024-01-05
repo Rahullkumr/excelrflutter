@@ -1,284 +1,139 @@
 <h1 align="center"> Day 13 (Flutter Excelr)</h1>
 
-1. [Ways to store data](#ways-to-store-data)
-2. [Local memory vs remote location](#local-memory-vs-remote-location)
-3. [SQLite Database](#sqlite-database)
-4. [Shared Preferences](#shared-preferences)
-5. [Cloud Storage (Firebase)](#cloud-storage-firebase)
-    - [Features of Firebase](#features-of-firebase)
-6. [Developed App](#developed-app)
-7. [Steps to use shared preferences](#steps-to-use-shared-preferences)
-8. [Complete code](#complete-code)
+## How network call is done?
+
+<img src="Images/api.jpg" alt="api screenshot">
 
 
-## Ways to store data
-
-1. Local Memory (Phone memory):
-    - Shared Preferences
-    - sqlite db
-    - Files
-
-2. Remote Location:
-    - Remote Server (API)
-    - Cloud Storage (Firebase)
-
-## Local memory vs remote location
-
-- Local memory is easily accessible but data you store will be limited
-
-- Remote location is not easily accessible but data you store will be unlimited
-
-- Local memory is used to store the data temporarily (cache) or permanently (database)
-
-- Local memory is accessible by only you or the app installed in your device
-
-- Remote location is accessible by everyone who has access to the server
-
-
-## SQLite Database
-
-- used to store large amount of data in the form of tables.
-- used to store complex data types like list, map etc.
-
-    Advantages:
-
-        - comes as a library in dart
-        - does not need to do any configuration
-        - light weight and specially designed for mobile devices
-        - follows relational database model
-
-## Shared Preferences
-
-- used to store small amount of data in key-value pair.
-- used to store primitive data types like boolean, int, double, string and list.
-- data is usually stored in XML format.
-- When we tick the remember me option in login page, the data is stored in shared preferences.
-- on next login, the data is retrieved from shared preferences and the user is logged in automatically without entering the credentials again.
-- Shared Preferences can be visualized as cookies in web development, which mostly store passwords and tokens.
-- Cookies are nothing but small files stored in the browser.
-
-
-    ### What to store in shared preferences?
-
-        - user data (name, email, phone, password, etc.) like in login page
-        - api data (key, token, user id, etc.)
-        - app data (is user logged in, is user new, etc.)
-        - app settings (theme, language, font size etc.)
-        - app cache (images, videos etc.)
-
-## Cloud Storage (Firebase)
-
-- Firebase is a Backend-as-a-Service (BaaS) platform developed by Google.
-- Firebase is particularly popular for mobile app development.
-- Firebase is used to store data in the form of JSON.
-- provides various tools and services to help developers build, manage, and grow their apps.
-
-### Features of Firebase
-
-1. Real-time Database: 
-    
-    - Firebase provides a NoSQL database that allows you to store and sync data in real-time. This is a great feature for apps that require real-time data updates, such as chat apps or multiplayer games.
-
-2. Authentication:
-        
-    - Firebase provides a built-in authentication system that allows you to easily authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more.
-
-3. Cloud Storage:
-
-    - Firebase provides a cloud storage service that allows you to store and serve user-generated content, such as photos or videos.
-
-4. Hosting:
-
-    - Firebase provides a hosting service that allows you to host your web app on Firebase servers. 
-
-5. Machine Learning: 
-    - Firebase's ML Kit provides a range of machine learning functionality that can be easily integrated into your app.
-
-6. Analytics: 
-    - Firebase provides a built-in analytics system that allows you to easily track user behavior and measure the success of your app.
-
-7. Crash Reporting: 
-    - Firebase provides a built-in crash reporting system that allows you to easily track and fix app crashes.
-
-8. Test Lab: 
-    - Firebase provides a built-in test lab that allows you to easily test your app on real devices.
-
-9. Cloud Messaging: 
-    - Firebase provides a built-in cloud messaging system that allows you to easily send push notifications to your users.
-
-10. AdMob: 
-    - Firebase provides a built-in ad network that allows you to easily monetize your app. <br><br>
-
-
-## Developed App
-
-<img src="Images/sharedPref.jpg" alt="shared preferences screenshot">
-
-## Steps to use shared preferences
-
-1. Add shared preferences dependency in pubspec.yaml file
-
-    ```yaml
-    dependencies:
-        flutter:
-            sdk: flutter
-        shared_preferences: ^2.0.6
-    ```
-2. Import shared preferences package in main.dart file
-
-    ```dart
-    import 'package:shared_preferences/shared_preferences.dart';
-    ```
-3. Create a controller for text field
-
-    ```dart
-    final TextEditingController _controller = TextEditingController();
-    ```
-4. Create a variable to store the saved text
-
-    ```dart
-    String _savedText = '';
-    ```
-5. Create a method to save data in shared preferences
-
-    ```dart
-    saveData() async {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('saved_text', _controller.text);
-        loadSavedData();
-    }
-    ```
-6. Create a method to load data from shared preferences
-
-    ```dart
-    loadSavedData() async {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        setState(() {
-        _savedText = prefs.getString('saved_text') ?? '';
-        });
-    }
-    ```
-7. Call the loadSavedData() method in initState() method
-
-    ```dart
-    @override
-    void initState() {
-        super.initState();
-        loadSavedData();
-    }
-    ```
-8. Create a text field and a button in the body of the scaffold widget
-
-    ```dart
-    TextField(
-        controller: _controller,
-        decoration: const InputDecoration(
-        labelText: "Enter text",
-        ),
-    ),
-    const SizedBox(
-        height: 20,
-    ),
-    ElevatedButton(
-        onPressed: saveData,
-        child: const Text("Save"),
-    ),
-    ```
-9. Create a text widget to display the saved text
-
-    ```dart
-    Text(
-        "Saved Data: $_savedText",
-        style: const TextStyle(
-        color: Colors.red,
-        fontSize: 30,
-        ),
-    ),
-    ```
-
-## Complete code
+## code
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+// responsible for n/w call, connect to server and get the data
+import 'dart:convert'; 
+// responsible for converting the incoming stream of 0s and 1s into object
 
-void main() {
-  runApp(const MyApp());
+
+// MODEL class (POJO class in java) responsible for holding incoming data temporarily
+class Posts {
+  final int id;
+  final int userId;
+  final String title;
+  final String body;
+
+  Posts({
+    required this.id,
+    required this.userId,
+    required this.title,
+    required this.body,
+  });
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
+class MyApi extends StatefulWidget {
+  const MyApi({super.key});
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApi> createState() => _MyApiState();
 }
 
-class _MyAppState extends State<MyApp> {
-  final TextEditingController _controller = TextEditingController();
-  String _savedText = '';
+class _MyApiState extends State<MyApi> {
+  Future<List<Posts>> getRequest() async {
+    // getRequest is a special method i.e asynchronous method
+    // which is a network call that returns "list of Posts" at some point in the future
+    
+    final url = Uri.parse("https://jsonplaceholder.typicode.com/posts");
+    // Uri: is a Dart class specifically designed to represent and manipulate URLs.
+    // parse(): checks whether the given URL is valid or not by breaking it into different parts(scheme, host, path, etc.)
+    // scheme: "https"; host: "jsonplaceholder.typicode.com"; path: "/posts"
 
-  @override
-  // life cycle of widget, this method gets called before build(), when screen loads
-  void initState() {
-    super.initState();
-    loadSavedData();
-  }
+    final response = await http.get(url);
+    // http.get(url) => http package k get() ka use karke, server se "HTTP GET request" send kr rhe hn
+    // in response, server Returns a Future object which means data will be available at some point in the future
+    // that's why "await" is used, which Pauses the execution of the current async fn i.e getRequest(),
+    // until the Future completes (i.e until the server response is received), 
+    // finally response data is stored in response variable
 
-  saveData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('saved_text', _controller.text);
-    loadSavedData();
-  }
+    var responseData = json.decode(response.body);
+    // response.statusCode ==> statusCode: 200 => success || 404 => not found
+    // response.headers    ==> {cache-control: max-age=43200, content-type: application/json; charset=utf-8, expires: -1, pragma: no-cache}
+    // response.body       ==> gives the entire HTTP response data in raw JSON format
+    // json.decode()       ==> decode() fn is from dart:convert;
+    //    Takes JSON raw data as input and converts it into a Dart data structure (usually Map<String, dynamic> or List or List of Maps).
+    //    This process is called JSON parsing or deserialization; serialization(converting dart => json)
+    // Why to decode or do deserialization?
+    //  bcoz  Dart doesn't support json; 
+    //  to structure data properly and gain access to properties of data structure(Map, List, etc) like [0], .first, .add('lol'), etc
 
-  loadSavedData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _savedText = prefs.getString('saved_text') ?? '';
-    });
+
+
+
+    // creating a list to store input data
+    List<Posts> users = [];
+    for (var singlePost in responseData) {
+      // responseData is a "List of Maps" i.e [{},{},{}......]
+      Posts user = Posts(
+        id: singlePost["id"],
+        userId: singlePost["userId"],
+        title: singlePost["title"],
+        body: singlePost["body"],
+      );
+
+      // Adding user to the list
+      users.add(user);
+    }
+    return users;
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Shared Preferences"),
-            centerTitle: true,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: _controller,
-                  decoration: const InputDecoration(
-                    labelText: "Enter text",
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("HTTP Network call"),
+        centerTitle: true,
+      ),
+      body: FutureBuilder(
+        // used to build UIs which contain future data
+        // The FutureBuilder widget tracks the state of the Future and calls the builder function with the snapshot object whenever its state changes
+        future: getRequest(),
+        builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+          // snapshot object holds the "data" returned by Future(null otherwise)
+          // also captures the current state i.e ConnectionState(none, waiting, active, done) of the asynchronous operation and helps in dynamically building UI
+          if (snapshot.data == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              // ensures that the list renders only as many items as there are items in the fetched data
+              itemBuilder: (ctx, index) => Card(                
+                margin: const EdgeInsets.all(5),
+                color: Colors.brown,
+                elevation: 5,
+                child: ListTile(
+                  title: Text(
+                    snapshot.data[index].title,
+                    // '${snapshot.data[index].id}', 
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  
+                  subtitle: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      snapshot.data[index].body,
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(                  
-                  onPressed: saveData,
-                  child: const Text("Save"),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Saved Data: $_savedText",
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+              ),
+            );
+          }
+        },
       ),
     );
   }
@@ -286,4 +141,4 @@ class _MyAppState extends State<MyApp> {
 
 ```
 <br><br>
-<h1 align="center">Excelr Flutter Successfully Completed</h1>
+<h1 align="center"> <a href="/Notes/day14.md">Day 14 Flutter</a></h1>

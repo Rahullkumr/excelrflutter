@@ -1,63 +1,95 @@
 <h1 align="center"> Day 11 (Flutter Excelr)</h1>
 
-## Working with API - Theory
-> How network call is done?
+## Bottom Navigation bar
 
-1. [API related terms](#api-related-terms)
-2. [Client Server Architecture](#client-server-architecture)
-3. [API and WebServices](#api-and-webservices)
+- BottomNavigationBar()
+- BottomNavigationBarItem()
 
+## Bottom Navigation bar
 
-## API related terms
+<img src="Images/day10a.jpg" alt="bottom navigation bar">
 
-- API - Application Programming Interface
-- REST - Representational State Transfer
-- SOAP - Simple Object Access Protocol
-- JSON - JavaScript Object Notation
-- HTTP - Hyper Text Transfer Protocol
-- HTTPS - Hyper Text Transfer Protocol Secure
-- URL - Uniform Resource Locator    `https://example.com/path`
-- URI - Uniform Resource Identifier `https://example.com/path?arg=value`
-- GET - Read, POST - Create, PUT - Update, DELETE - Delete
-- API Key - Unique key to identify the user
-- API Endpoint - URL to access the API
+```dart
+// inside Scaffold
 
+bottomNavigationBar: BottomNavigationBar(
+    items: const [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "home",
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: "List Screen",
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.refresh),
+            label: "Random nos",
+        ),
+    ],
+)
+```
 
-## Client Server Architecture
+## Working code
 
+<img src="Images/day10b.jpg" alt="bottom navigation bar homePage" width=350>
+<img src="Images/day10c.jpg" alt="bottom navigation bar alertScreen">
 
-<img src="Images/restApi.png" alt="clent server">
+```dart
+import 'package:flutter/material.dart';
+import 'package:myapp/alert_screen.dart';
+import 'package:myapp/text_input_display.dart';
 
-`Client` Anyone(mobile/browser/software/app) who makes request to the server 
+class LandingScreen extends StatefulWidget {
+  const LandingScreen({super.key});
 
-`Server` Anyone who responds to the request
+  @override
+  State<LandingScreen> createState() => _LandingScreenState();
+}
 
+class _LandingScreenState extends State<LandingScreen> {
+  var myCurrentIndex = 0;
+  var screens = [
+    const LandingScreen(),
+    const AlertScreen(),
+    const InputScreen()
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screens[myCurrentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.amberAccent,
+        iconSize: 30,
+        currentIndex: myCurrentIndex, // makes icon active onTap
+        onTap: (index) { // imp
+          setState(() {
+            myCurrentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.warning),
+            label: "Alert",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.input),
+            label: "Input",
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 ```
-Let's assume that there is a centralized dB of ABC company. 
-Most of the employees of the company can access it.
 
-You are not an employee of the company and suppose you get access to the dB, 
-then you can ADD, DELETE or UPDATE the dB which is very dangerous.
-
-But you need data from ABC dB, so there should be a procedure/mechanism through which you can get the data.
-
-Here comes API.
-
-```
-## API and WebServices
-
-- API is nothing but a program written in any programming language and resides on the server.
-
-- WebService is a type of API which always uses HTTP protocol.
-
-- All WebServices are API but all API are not WebServices.
-
-- responsibility of API
-
-    - go and talk to dB, do whatever needs to be done and pass the response back to the client.
-- `Response` can be in any format like JSON, XML, HTML, etc. but mostly JSON is used.
 
 
 <br><br>
-<h1 align="center"> <a href="/day12.md">Day 12 Flutter</a></h1>
+<h1 align="center"> <a href="/Notes/day12.md">Day 12 Flutter</a></h1>

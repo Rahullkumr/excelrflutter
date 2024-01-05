@@ -1,145 +1,175 @@
 <h1 align="center"> Day 9 (Flutter Excelr)</h1>
 
-1. [Navigation / Routing](#navigation--routing)
-2. [Dynamic routing](#dynamic-routing)
-3. [Static routing (Named routing)](#static-routing-named-routing)
-4. [Details about `push`](#details)
-5. [Passing data b/w routes](#passing-data-bw-routes)
+1. [Disadvantages of ListView](#disadvantages-of-listview)
+2. [List generator](#list-generator)
+3. [Long list == ListView.builder()](#long-list--listviewbuilder)
+4. [Alertbox](#alertbox)
+5. [Stateful widget](#stateful-widget)
 
-## Navigation / Routing
-> navigating b/w two screens
+## Topics
+- List generator
+- Long list i.e ListView.builder()
+    > Adapter in Android
+- alertbox
+- input text and display it on click of submit button (using setState)
 
-- called Routes in Flutter
-    - Dynamic routing 
-    - Static routing (Named routing)
 
-## Dynamic routing
+## Disadvantages of ListView
+- not aware of how much data is coming from db or server 5, 10 or 5k
+    - so we need a dynamic list(called Longlist in dart)
+        - ListView hi hai but builder method use kr rhe hn list ko build krne k liye
+- other problem with yesterday's list is that - 
+everything gets loaded on the screen,leads to memory occupancy
 
-```dart
-ElevatedButton(
-    onPressed: (){
-        // DYNAMIC NAVIGATION
-        //Navigator.pushReplacement(
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context){
-                    return AlertScreen();
-                }
-            )
-        )
-    }, 
-    child: const Text("Next Screen"),
-)
-```
+- adv (longlist) => when we scroll then only the items get loaded on the screen
 
-## Static routing (Named routing)
 
-- declare routes in MaterialApp and remove home: attribute
+## List generator
 
 ```dart
-MaterialApp(
-    routes: {
-        ('/'):(context) => Home(),
-        ('/input'):(context) => InputScreen(),
-        ('/alert'):(context) => AlertScreen(),
-    },
-    debugShowCheckedModeBanner: false,
-    title: 'Day9',
-    // home: Home(),
-)
-```
-```dart
-ElevatedButton(
-    onPressed: (){
-        // STATIC NAVIGATION
-        Navigator.pushNamed(context, "/alert");
-    }, 
-    child: const Text("Go to Input Screen"),
-)
-```
 
-## Details
+// The lambda fn is called once for each element in the list, 
+// and the return value of the function is used to populate the element.
 
-- push: 
-    > dynamic navigation; uses STACK 
-    - adds the new screen on top of the current screen in stack 
-    - gives back button to go to previous screen
-
-- pushReplacement:
-    > dynamic navigation; uses STACK 
-    - replaces the current screen with new screen in stack
-    - going back is not possible
-
-- pushNamed:
-    > STATIC navigation, already declared the route names; uses STACK 
-    - adds the new screen on top of the current screen in stack 
-    - gives back button to go to previous screen
-
-## Passing data b/w routes
-
-```dart
-// data passing screen
-ElevatedButton(
-    onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) {
-                    return Home(
-                        dataRec: name, // data being passed
-                        // name is the variable which is storing input
-                    );
-                },
-            ),
-        );
-    },
-    child: const Text("goto HomePage"),
-)
-```
-
-```dart
-// receiving screen
-
-import 'package:flutter/material.dart';
-
-class Home extends StatefulWidget {
-  String? dataRec;
-  Home({required this.dataRec});
-
-  @override
-  State<StatefulWidget> createState(){
-    return HomeState(dataRec!);
-  }
+void main() {
+  print(
+    List.generate(
+      10, // max limit or no of times the fn is to be called
+      (counter) {
+        return counter;
+      },
+    ),
+  );
 }
 
-class HomeState extends State<Home> {
-  String dataRec;
-  HomeState(this.dataRec);
+output
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+## Long list == ListView.builder()
+
+<img src="Images/day8.jpg" alt="day 8 image">
+
+```dart
+getLongList() {
+    // get data from generate method
+    var generatedList = generateListElements();
+    var myListView = ListView.builder(
+      itemCount: generatedList.length, // removes the red error (visible in screenshot)
+      // tells exactly how many items to be built. 
+      itemBuilder: (context, index) {
+        // context = this screen i.e this class; index = index of list items
+        return ListTile(
+          title: Text(
+            generatedList[index],
+          ),
+        );
+      },
+    );
+    // this builder is going to help in building the item(each row) one by one
+    return myListView;
+  }
+
+  // generate list elements
+  generateListElements() {
+    var myListItems = List.generate(10, (counter) => "Generated Element : $counter");
+    return myListItems;
+  }
+```
+
+
+## Alertbox
+
+<img src="Images/alert.jpg" alt="day 9 image" alt="alert box image">
+
+```dart
+ElevatedButton(
+  onPressed: () {
+    showDialog(context: context, builder: (ctx){
+      return AlertDialog(        
+        title: const Text("My alert box"),                
+        content: const Text("Are you fine"),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.of(ctx).pop();
+          }, child: const Text("OK"))
+        ],
+      );
+    });
+  },
+  child: const Text("show alert"),
+)
+```
+
+
+# Stateful widget
+
+  > Get input from user and display it on click of submit button
+
+<img src="Images/textInputDisplay.jpg" alt="input image">
+
+```dart
+import 'package:flutter/material.dart';
+
+class InputScreen extends StatefulWidget {
+  const InputScreen({super.key});
+  @override
+  State<InputScreen> createState() => _InputScreenState();
+}
+
+class _InputScreenState extends State<InputScreen> {
+  String name = '';
+  // important
+  TextEditingController inputcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("Home Page"),
+        title: const Text("Input Screen"),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-           Center(
-            child: Text("Recieved Data is: $dataRec"),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: inputcontroller, // important
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        name = inputcontroller.text;
+                      });
+                    },
+                    child: const Text("Submit"),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text("Input text is: $name"),
+          ],
+        ),
       ),
     );
   }
 }
 ```
-<img src="Images/day9a.jpg" alt="sending image">
-<img src="Images/day9b.jpg" alt="receiving image">
-
 
 <br><br>
-<h1 align="center"> <a href="/day10.md">Day 10 Flutter</a></h1>
+<h1 align="center"> <a href="/Notes/day10.md">Day 10 Flutter</a></h1>
