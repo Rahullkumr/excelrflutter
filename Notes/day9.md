@@ -48,7 +48,7 @@ output
 
 ## Long list == ListView.builder()
 
-<img src="Images/day8.jpg" alt="day 8 image">
+<img src="../Images/day9.jpg" alt="day 9 image">
 
 ```dart
 getLongList() {
@@ -106,7 +106,7 @@ ElevatedButton(
 
   > Get input from user and display it on click of submit button
 
-<img src="Images/textInputDisplay.jpg" alt="input image">
+<img src="../Images/textInputDisplay.jpg" alt="input image">
 
 ```dart
 import 'package:flutter/material.dart';

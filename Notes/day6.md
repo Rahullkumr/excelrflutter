@@ -3,7 +3,7 @@
 
 ## Today's App 
 
-<img src="Images/day6.jpg">
+<img src="../Images/day6.jpg">
 
 ### main.dart
 

@@ -26,7 +26,7 @@
 ## Client Server Architecture
 
 
-<img src="Images/restApi.png" alt="clent server">
+<img src="../Images/restApi.png" alt="clent server">
 
 `Client` Anyone(mobile/browser/software/app) who makes request to the server 
 

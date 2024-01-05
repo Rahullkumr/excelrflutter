@@ -289,6 +289,4 @@
         }
     ```
 
-
-
 <h1 align="center"> <a href="/Notes/day3.md">Day 3 notes</a></h1>

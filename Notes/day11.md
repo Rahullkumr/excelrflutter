@@ -7,7 +7,7 @@
 
 ## Bottom Navigation bar
 
-<img src="Images/day10a.jpg" alt="bottom navigation bar">
+<img src="../Images/day10a.jpg" alt="bottom navigation bar">
 
 ```dart
 // inside Scaffold
@@ -32,8 +32,8 @@ bottomNavigationBar: BottomNavigationBar(
 
 ## Working code
 
-<img src="Images/day10b.jpg" alt="bottom navigation bar homePage" width=350>
-<img src="Images/day10c.jpg" alt="bottom navigation bar alertScreen">
+<img src="../Images/day11b.jpg" alt="bottom navigation bar homePage" width=350>
+<img src="../Images/day11c.jpg" alt="bottom navigation bar alertScreen">
 
 ```dart
 import 'package:flutter/material.dart';

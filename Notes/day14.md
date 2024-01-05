@@ -112,7 +112,7 @@
 
 ## Developed App
 
-<img src="Images/sharedPref.jpg" alt="shared preferences screenshot">
+<img src="../Images/sharedPref.jpg" alt="shared preferences screenshot">
 
 ## Steps to use shared preferences
 

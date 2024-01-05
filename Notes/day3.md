@@ -189,7 +189,7 @@
 
 ## 3 Types of Inheritance in Dart
 
-<img src='Images/inheritanceDart.png' alt="Types of Inheritance image">
+<img src="../Images/inheritanceDart.png" alt="Types of Inheritance image"><br>
 
 1. Single Inheritance
     - A class can inherit from only one class
@@ -255,4 +255,4 @@ Tiger Eating GOOD FOOD
 
 
 
-<h1 align="center"> <a href="/day4.md">Day 4 notes</a></h1>
+<h1 align="center"> <a href="/Notes/day4.md">Day 4 notes</a></h1>

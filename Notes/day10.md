@@ -137,8 +137,8 @@ class HomeState extends State<Home> {
   }
 }
 ```
-<img src="Images/day9a.jpg" alt="sending image">
-<img src="Images/day9b.jpg" alt="receiving image">
+<img src="../Images/day10a.jpg" alt="sending image">
+<img src="../Images/day10b.jpg" alt="receiving image">
 
 
 <br><br>

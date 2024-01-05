@@ -3,7 +3,7 @@
 
 ## Today's App 
 
-<img src="Images/day5.jpg">
+<img src="../Images/day5.jpg">
 
 ```dart
 import 'package:flutter/material.dart';
@@ -40,4 +40,4 @@ class MyApp extends StatelessWidget {
 
 
 <br><br>
-<h1 align="center"> <a href="/day6.md">Day 6 Flutter</a></h1>
+<h1 align="center"> <a href="/Notes/day6.md">Day 6 Flutter</a></h1>

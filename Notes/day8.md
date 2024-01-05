@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 
 - Generates a random number between 0 and 100
 
-<img src="Images/day7b.jpg">
+<img src="../Images/day8b.jpg">
 
 ```dart
 import 'dart:math';
@@ -75,7 +75,7 @@ class Home extends StatelessWidget {
 
 - Displays a list of items
 
-<img src="Images/day7a.jpg">
+<img src="../Images/day8a.jpg">
 
 ```dart
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@
 
 ## How network call is done?
 
-<img src="Images/api.jpg" alt="api screenshot">
+<img src="../Images/api.jpg" alt="api screenshot">
 
 
 ## code
