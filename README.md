@@ -33,3 +33,6 @@
 - [Day 13: Network call - Practical](/Notes/day13.md)
 - [Day 14: How to store data - Shared Preferences](/Notes/day14.md)
 - [Day 15: Final Test](#)
+
+<br><br>
+<h1 align="center"><a href="https://zapp.run/edit/flutter?entry=lib/main.dart&file=lib/main.dart">Try the apps</a></h1>
