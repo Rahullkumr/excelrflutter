@@ -35,4 +35,4 @@
 - [Day 15: Final Test](#)
 
 <br><br>
-<h1 align="center"><a href="https://zapp.run/edit/flutter?entry=lib/main.dart&file=lib/main.dart">Try the apps</a></h1>
+<h1 align="center"><a href="https://zpe06kypf06.zapp.page/#/">Try the apps</a></h1>
