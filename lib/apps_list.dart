@@ -5,6 +5,7 @@ import 'package:myapp/hello_world.dart';
 import 'package:myapp/longlist.dart';
 import 'package:myapp/mylistview.dart';
 import 'package:myapp/random_num.dart';
+import 'package:myapp/user_inp_disp.dart';
 
 class AppsList extends StatelessWidget {
   const AppsList({super.key});
@@ -96,7 +97,14 @@ class AppsList extends StatelessWidget {
               child: getCard("6", "AlertBox example", "A Stateless App"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const UserInp();
+                  }),
+                );
+              },
               child: getCard("7", "User Input and Display",
                   "Take input and display it when submit button is clicked"),
             ),

@@ -1,30 +1,37 @@
-StatelessWidget user_inp_disp() {
-  return Container(
-    width: 300,
-    height: 50,
-    child: Row(
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          child: Icon(
-            Icons.person,
-            color: Colors.white,
-          ),
-        ),
-        Container(
-          width: 250,
-          height: 50,
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Username',
-              hintStyle: TextStyle(
-                color: Colors.white,
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class UserInp extends StatefulWidget {
+  const UserInp({super.key});
+
+  @override
+  State<UserInp> createState() => _UserInpState();
+}
+
+class _UserInpState extends State<UserInp> {
+  TextEditingController inputController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Display User Input"),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: inputController,
+                ),
               ),
-            ),
+            ],
           ),
-        ),
-      ],
-    ),
-  );
+          const SizedBox(height: 20,)
+        ],
+      ),
+    );
+  }
 }
