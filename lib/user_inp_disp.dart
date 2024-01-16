@@ -23,8 +23,6 @@ class _UserInpState extends State<UserInp> {
           Row(
             children: [
               Expanded(
-                child: TextField(
-                  controller: inputController,
                 ),
               ),
             ],
