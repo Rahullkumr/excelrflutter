@@ -13,23 +13,14 @@ class _UserInpState extends State<UserInp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Display User Input"),
-        centerTitle: true,
+    return Container(child: TextField(
+      controller: inputController,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: 'Enter your name',
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20,)
-        ],
-      ),
+    ),
+    );
     );
   }
 }
