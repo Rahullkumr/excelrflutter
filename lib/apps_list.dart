@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/alert.dart';
+import 'package:myapp/bottom_nav_bar.dart';
 import 'package:myapp/exploring.dart';
 import 'package:myapp/hello_world.dart';
 import 'package:myapp/longlist.dart';
-import 'package:myapp/navigation_and_routing.dart';
+import 'package:myapp/my_api.dart';
 import 'package:myapp/mylistview.dart';
+import 'package:myapp/navigation_and_routing.dart';
 import 'package:myapp/random_num.dart';
 import 'package:myapp/user_inp_disp.dart';
 
@@ -134,7 +136,12 @@ class AppsList extends StatelessWidget {
                   "9", "Bottom Navigation Bar Example", "A stateful app"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApi()),
+                );
+              },
               child: getCard("10", "Network Call",
                   "Get data from api and print using longlist"),
             ),
