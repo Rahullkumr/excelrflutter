@@ -122,7 +122,14 @@ class AppsList extends StatelessWidget {
                   "Navigate and pass data b/w screens"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyBottomNavBar(),
+                  ),
+                );
+              },
               child: getCard(
                   "9", "Bottom Navigation Bar Example", "A stateful app"),
             ),
