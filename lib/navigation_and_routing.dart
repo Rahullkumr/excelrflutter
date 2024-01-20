@@ -16,7 +16,7 @@ class _NavigationAndRoutingState extends State<NavigationAndRouting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Static or Named Routing"),
+        title: const Text("Dynamic Routing & Data Transfer"),
         centerTitle: true,
       ),
       body: Column(
