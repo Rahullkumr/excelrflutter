@@ -5,6 +5,7 @@ import 'package:myapp/exploring.dart';
 import 'package:myapp/hello_world.dart';
 import 'package:myapp/longlist.dart';
 import 'package:myapp/my_api.dart';
+import 'package:myapp/my_shared_preferences.dart';
 import 'package:myapp/mylistview.dart';
 import 'package:myapp/navigation_and_routing.dart';
 import 'package:myapp/random_num.dart';
@@ -146,7 +147,12 @@ class AppsList extends StatelessWidget {
                   "Get data from api and print using longlist"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MySharedPreferences()),
+                );
+              },
               child: getCard("11", "Shared Preferences Example",
                   "store small data locally"),
             ),
