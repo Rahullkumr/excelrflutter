@@ -35,4 +35,8 @@
 - [Day 15: Final Test](#)
 
 <br><br>
-<h1 align="center"><a href="https://zpe06kypf06.zapp.page/#/">Try the apps</a></h1>
+<h1 align="center"><a href="https://z94806bs9490.zapp.page/#/">Try the apps</a></h1>
+<br><br>
+
+
+Run any Flutter repository on Zapp website: <a href="https://zapp.run/assets/homepage/import-github.gif">refer this link </a>
