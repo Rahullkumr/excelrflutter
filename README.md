@@ -35,7 +35,10 @@
 - [Day 15: Final Test](#)
 
 <br><br>
-<h1 align="center"><a href="https://z94806bs9490.zapp.page/#/">Try the apps</a></h1>
+<h1 align="center">
+    <a href="https://github.com/Rahullkumr/excelrflutter/releases/tag/v1.0.1">Try the app by INSTALLING </a> |
+    <a href="https://z94806bs9490.zapp.page/#/">View on the web</a>
+</h1>
 <br><br>
 
 
